@@ -1,6 +1,6 @@
 <?php
 
-include("../core/db_connect.php");
+// include("./core/db_connect.php");
 
 // // Selecteer alle producten (simpele vorm)
 // $sql = "SELECT * FROM producten";
@@ -67,18 +67,22 @@ function getProducts(){
     global $con;
     $array = array();
 
-    $sqli_prepare = $con->prepare("SELECT product_id,product_name,product_price FROM products;");
+    $sqli_prepare = $con->prepare("SELECT product_id,product_name,product_brand,product_size,product_price,product_img1 FROM products;");
     if ($sqli_prepare === false) {
         echo mysqli_error($con);
     } else{
         if ($sqli_prepare->execute()) {
-            $sqli_prepare->bind_result($product_id,$product_name,$product_price);
+            $sqli_prepare->bind_result($product_id,$product_name,$product_brand,$product_size,$product_price,$product_img1);
             while($sqli_prepare->fetch()){
 
                 $array[$product_id] =[
                     'id' => $product_id,
                     'product_name' => $product_name,
+                    'product_brand' => $product_brand,
+                    'product_size' => $product_size,
                     'product_price' => $product_price,
+                    'product_img1' => $product_img1,
+
                 ];
 
             }
@@ -92,4 +96,4 @@ function getProducts(){
 
 }
 
-prettyDump(getProducts());
+// prettyDump(getProducts());

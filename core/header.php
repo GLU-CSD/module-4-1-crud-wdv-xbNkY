@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?=BASEURL;?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo BASEURL;?>assets/css/style.css">
-    <title>Webshop met een leuke naam</title>
+    <title>// Store</title>
 </head>
 <body>
     <div class="container">
