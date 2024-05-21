@@ -15,9 +15,9 @@
                 $product_price = $item['product_price'];
                 
                 ?>
-                <div class="col-4 mb-3">
+        <div class="col-4 mb-3">
             <div class="card w-100">
-                <img src="<?php echo $product_img1 ?>" class="card-img-top" alt="...">
+                <img src="./assets/img/<?php echo $product_img1 ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title"><?php  echo $product_brand . " " . $product_name ?></h5>
                     <p class="card-text">&euro; <?php echo $product_price ?></p>
