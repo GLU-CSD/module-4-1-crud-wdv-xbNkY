@@ -76,7 +76,7 @@ function getProducts(){
             while($sqli_prepare->fetch()){
 
                 $array[$product_id] =[
-                    'id' => $product_id,
+                    'product_id' => $product_id,
                     'product_name' => $product_name,
                     'product_brand' => $product_brand,
                     'product_size' => $product_size,
@@ -113,7 +113,7 @@ function getProductsHP(){
             $sqli_prepare->bind_result($product_id,$product_name,$product_brand,$product_size,$product_img1,$product_price);
             while($sqli_prepare->fetch()){
                 $array[$product_id] =[
-                    'id' => $product_id,
+                    'product_id' => $product_id,
                     'product_name' => $product_name,
                     'product_brand' => $product_brand,
                     'product_size' => $product_size,
@@ -124,7 +124,41 @@ function getProductsHP(){
         }
     }
     $sqli_prepare->close();
+    // $array2 = shuffle($array);
     return $array;
+}
+
+function getProductById($product_id) {
+    global $con;
+    $product = null;
+
+    $sqli_prepare = $con->prepare("SELECT product_id, product_name, product_brand, product_size, product_resolution, product_refreshrate, product_price, product_img1, product_img2, product_img3, product_about FROM products WHERE product_id = ?");
+    if ($sqli_prepare === false) {
+        echo mysqli_error($con);
+    } else {
+        $sqli_prepare->bind_param('i', $product_id);
+        if ($sqli_prepare->execute()) {
+            $sqli_prepare->bind_result($id, $name, $brand, $size, $resolution, $refreshrate, $price, $img1, $img2, $img3, $about);
+            if ($sqli_prepare->fetch()) {
+                $product = [
+                    'product_id' => $id,
+                    'product_name' => $name,
+                    'product_brand' => $brand,
+                    'product_size' => $size,
+                    'product_resolution' => $resolution,
+                    'product_refreshrate' => $refreshrate,
+                    'product_price' => $price,
+                    'product_img1' => $img1,
+                    'product_img2' => $img2,
+                    'product_img3' => $img3,
+                    'product_about' => $about
+                ];
+            }
+        }
+        $sqli_prepare->close();
+    }
+
+    return $product;
 }
 
 ?>
