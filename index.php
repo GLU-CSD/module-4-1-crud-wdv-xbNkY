@@ -2,12 +2,11 @@
     include('core/header.php');
     include('functions/products.php');
 
-    $products = getProducts();
-    $product_count = 0; // Prevents overflow
+    $products = getProductsHP();
 ?>
 <div class="row">
     <div class="col">
-        <h1 class="text-center">Welcome</h1>
+        <h1 class="text-center">bonky.dev</h1>
     </div>
 </div>
 
@@ -21,13 +20,10 @@
         
         foreach($products as $item){
 
-            if($product_count >=3){
-                break;
-            }
-
             $product_id = $item['id'];
             $product_name = $item['product_name'];
             $product_brand = $item['product_brand'];
+            $product_size = $item['product_size'];
             $product_img1 = $item['product_img1'];
             $product_price = $item['product_price'];
             
@@ -36,16 +32,15 @@
         <div class="card w-100">
             <img src="./assets/img/<?php echo $product_img1 ?>" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title"><?php  echo $product_brand . " " . $product_name ?></h5>
+                <h5 class="card-title"><?php echo $product_brand . " " . $product_name . " " . $product_size ?></h5>
                 <p class="card-text">&euro; <?php echo $product_price ?></p>
-                <a href="product.php" class="btn btn-primary">+</a>
+                <a href="product.php?id=<?php echo $product_id; ?>" class="btn btn-primary">+</a>
             </div>
         </div>
         </div>         
-            <?php
-                $product_count++;
+         <?php   
         };
-            ?>
+           ?> 
     <div class="col-12 text-center">
         <a href="products.php" class="btn btn-info">View more</a>
     </div>    

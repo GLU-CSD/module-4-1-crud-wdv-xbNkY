@@ -1,6 +1,6 @@
 <?php
-    include('../core/header.php');
+    include('./core/header.php');
 ?>
 <?php
-    include('../core/footer.php');
+    include('./core/footer.php');
 ?>

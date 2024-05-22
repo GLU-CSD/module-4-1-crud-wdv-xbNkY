@@ -67,12 +67,12 @@ function getProducts(){
     global $con;
     $array = array();
 
-    $sqli_prepare = $con->prepare("SELECT product_id,product_name,product_brand,product_size,product_price,product_img1 FROM products;");
+    $sqli_prepare = $con->prepare("SELECT product_id,product_name,product_brand,product_size,product_resolution,product_refreshrate,product_price,product_img1,product_img2,product_img3,product_about FROM products;");
     if ($sqli_prepare === false) {
         echo mysqli_error($con);
     } else{
         if ($sqli_prepare->execute()) {
-            $sqli_prepare->bind_result($product_id,$product_name,$product_brand,$product_size,$product_price,$product_img1);
+            $sqli_prepare->bind_result($product_id,$product_name,$product_brand,$product_size,$product_resolution,$product_refreshrate,$product_price,$product_img1,$product_img2,$product_img3,$product_about);
             while($sqli_prepare->fetch()){
 
                 $array[$product_id] =[
@@ -80,8 +80,13 @@ function getProducts(){
                     'product_name' => $product_name,
                     'product_brand' => $product_brand,
                     'product_size' => $product_size,
+                    'product_resolution' => $product_resolution,
+                    'product_refreshrate' => $product_refreshrate,
                     'product_price' => $product_price,
                     'product_img1' => $product_img1,
+                    'product_img2' => $product_img2,
+                    'product_img3' => $product_img3,
+                    'product_about' => $product_about,
 
                 ];
 
@@ -91,9 +96,35 @@ function getProducts(){
     $sqli_prepare->close();
     
 
-    $array2 = shuffle($array);
+    // $array2 = shuffle($array);
     return $array;
 
+};
+
+function getProductsHP(){
+    global $con;
+    $array = array();
+
+    $sqli_prepare = $con->prepare("SELECT product_id,product_name,product_brand,product_size,product_img1,product_price FROM products LIMIT 3;");
+    if ($sqli_prepare === false) {
+        echo mysqli_error($con);
+    } else{
+        if ($sqli_prepare->execute()) {
+            $sqli_prepare->bind_result($product_id,$product_name,$product_brand,$product_size,$product_img1,$product_price);
+            while($sqli_prepare->fetch()){
+                $array[$product_id] =[
+                    'id' => $product_id,
+                    'product_name' => $product_name,
+                    'product_brand' => $product_brand,
+                    'product_size' => $product_size,
+                    'product_img1' => $product_img1,
+                    'product_price' => $product_price,
+                ];
+            }
+        }
+    }
+    $sqli_prepare->close();
+    return $array;
 }
 
-// prettyDump(getProducts());
+?>
