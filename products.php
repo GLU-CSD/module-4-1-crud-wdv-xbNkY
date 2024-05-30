@@ -6,7 +6,7 @@ $products = getProducts();
 ?>
 
 <div class="row">
-    <?php foreach($products): ?>
+    <?php foreach($products as $item): ?>
         <div class="col-4 mb-3">
             <div class="card w-100">
                 <img src="./assets/img/<?php echo $item['product_img1']; ?>" class="card-img-top" alt="...">

@@ -63,11 +63,12 @@ VALUES ('Wit T-shirt', 14.95, 'https://www.pexels.com/search/t-shirt/', 'Basic w
 */
 
 
-function getProducts(){
+function getProducts($limit = ""){
     global $con;
     $array = array();
 
-    $sqli_prepare = $con->prepare("SELECT product_id,product_name,product_brand,product_size,product_resolution,product_refreshrate,product_price,product_img1,product_img2,product_img3,product_about FROM products;");
+    if(!empty($limit)) $limit = " LIMIT " . $limit; 
+    $sqli_prepare = $con->prepare("SELECT product_id,product_name,product_brand,product_size,product_resolution,product_refreshrate,product_price,product_img1,product_img2,product_img3,product_about FROM products".$limit.";");
     if ($sqli_prepare === false) {
         echo mysqli_error($con);
     } else{
@@ -76,7 +77,7 @@ function getProducts(){
             while($sqli_prepare->fetch()){
 
                 $array[$product_id] =[
-                    'product_id' => $product_id,
+                    'product_id' => $product_id,    
                     'product_name' => $product_name,
                     'product_brand' => $product_brand,
                     'product_size' => $product_size,
@@ -96,37 +97,10 @@ function getProducts(){
     $sqli_prepare->close();
     
 
-    // $array2 = shuffle($array);
+    $array2 = shuffle($array);
     return $array;
 
 };
-
-function getProductsHP(){
-    global $con;
-    $array = array();
-
-    $sqli_prepare = $con->prepare("SELECT product_id,product_name,product_brand,product_size,product_img1,product_price FROM products LIMIT 3;");
-    if ($sqli_prepare === false) {
-        echo mysqli_error($con);
-    } else{
-        if ($sqli_prepare->execute()) {
-            $sqli_prepare->bind_result($product_id,$product_name,$product_brand,$product_size,$product_img1,$product_price);
-            while($sqli_prepare->fetch()){
-                $array[$product_id] =[
-                    'product_id' => $product_id,
-                    'product_name' => $product_name,
-                    'product_brand' => $product_brand,
-                    'product_size' => $product_size,
-                    'product_img1' => $product_img1,
-                    'product_price' => $product_price,
-                ];
-            }
-        }
-    }
-    $sqli_prepare->close();
-    // $array2 = shuffle($array);
-    return $array;
-}
 
 function getProductById($product_id) {
     global $con;

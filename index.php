@@ -2,7 +2,7 @@
 include('core/header.php');
 include('functions/products.php');
 
-$products = getProductsHP();
+$products = getProducts();
 ?>
 
 <div class="row">
