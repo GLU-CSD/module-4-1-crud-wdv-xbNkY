@@ -21,6 +21,7 @@ if ($con -> connect_errno) {
 
 define("BASEURL","http://localhost/Webshop-module4/");
 define("BASEURL_CMS","http://localhost/Webshop-module4/admin/");
+define("ABSOLUTE_HREF","D:/xampp/htdocs/Webshop-module4/admin/assets/upload");
 
 function prettyDump ( $var ) {
     echo "<pre>";

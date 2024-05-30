@@ -2,7 +2,6 @@
 include('core/header.php');
 include('functions/products.php');
 
-
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $product_id = $_GET['id'];
     $product = getProductById($product_id);
@@ -16,11 +15,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         <div class="col-md-6">
                             <div class="images p-3">
                                 <div class="text-center p-4">
-                                    <img id="main-image" src="./assets/img/<?php echo $product['product_img1']; ?>" width="250" />
+                                    <img id="main-image" src="./admin/assets/upload/<?php echo $product['product_img1']; ?>" class="card-img-top" alt="Product Image" style="width: 125px; height: auto;">
                                 </div>
                                 <div class="thumbnail text-center">
-                                    <img src="./assets/img/<?php echo $product['product_img2']; ?>" width="70">
-                                    <img src="./assets/img/<?php echo $product['product_img3']; ?>" width="70">
+                                    <img src="./admin/assets/upload/<?php echo $product['product_img2']; ?>" width="70" alt="Product Image">
+                                    <img src="./admin/assets/upload/<?php echo $product['product_img3']; ?>" width="70" alt="Product Image">
                                 </div>
                             </div>
                         </div>
@@ -33,7 +32,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                         <span class="act-price">&euro; <?php echo $product['product_price']; ?></span>
                                     </div>
                                 </div>
-                                <p class="about"><?php echo $product['product_size'] . " " . $product['product_resolution'] . " " . $product['product_refreshrate']; ?></p>
+                                <p class="about"><?php echo $product['product_size'] . " " . $product['product_resolution'] . " " . $product['product_refreshrate'] . " " . $product['product_about']; ?></p>
                                 <div class="sizes mt-5"></div>
                                 <div class="cart mt-4 align-items-center">
                                     <button class="btn btn-danger text-uppercase mr-2 px-4">

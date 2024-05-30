@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
     include($_SERVER['DOCUMENT_ROOT'].'/Webshop-module4/core/db_connect.php');
 ?>
 <!DOCTYPE html>
@@ -16,8 +16,6 @@
     <div class="container">
         <div class="row">
             <div class="btn-group" role="group">
-                <div><a href="<?=BASEURL_CMS;?>users/" class="btn btn-primary">Gebruikers</a></div>
-                <div><a href="<?=BASEURL_CMS;?>orders/" class="btn btn-primary">Bestellingen</a></div>
                 <div><a href="<?=BASEURL_CMS;?>products/" class="btn btn-primary">Producten</a></div>
             </div>
-        </div>
+        </div> -->

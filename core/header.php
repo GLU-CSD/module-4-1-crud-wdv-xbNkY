@@ -1,5 +1,5 @@
 <?php
-    include('core/db_connect.php');
+    include($_SERVER['DOCUMENT_ROOT'].'/Webshop-module4/core/db_connect.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,16 +15,16 @@
     <div class="container">
         <div class="row">
             <nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
-                <a class="navbar-brand" href="#">㋛</a>
+                <a class="navbar-brand" href="/Webshop-module4/index.php">㋛</a>
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link" href="#scrollspyHeading1">"Cart"</a>
+                        <!-- <a class="nav-link" href="#scrollspyHeading1">"Cart"</a> -->
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#scrollspyHeading2">"Account"</a>
+                        <a class="nav-link" href="admin/products/">CRUD</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">☰</a>
+                        <!-- <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">☰</a> -->
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
                             <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>

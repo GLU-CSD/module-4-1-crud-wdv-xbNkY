@@ -9,7 +9,9 @@ $products = getProducts();
     <?php foreach($products as $item): ?>
         <div class="col-4 mb-3">
             <div class="card w-100">
-                <img src="./assets/img/<?php echo $item['product_img1']; ?>" class="card-img-top" alt="...">
+                <div class="d-flex justify-content-center">
+                    <img id="main-image" src="./admin/assets/upload/<?php echo $item['product_img1']; ?>" class="card-img-top" alt="Product Image" style="width: 400px; height: 200px; object-fit: contain; margin-top: 15px;">
+                </div>
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $item['product_brand'] . " " . $item['product_name']; ?></h5>
                     <p class="card-text">&euro; <?php echo $item['product_price']; ?></p>
