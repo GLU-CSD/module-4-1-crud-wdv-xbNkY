@@ -21,7 +21,7 @@ $products = getProducts(3);
     <?php foreach ($products as $item): ?>
         <div class="col-4 mb-3">
             <div class="card w-100">
-                <img src="./assets/img/<?php echo $item['product_img1']; ?>" class="card-img-top" alt="Product Image">
+                <img src="./admin/assets/upload/<?php echo $item['product_img1']; ?>" class="card-img-top" alt="Product Image">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $item['product_brand'] . " " . $item['product_name'] . " " . $item['product_size']; ?></h5>
                     <p class="card-text">&euro; <?php echo $item['product_price']; ?></p>
